@@ -78,7 +78,7 @@ class Clock: NSObject, NSApplicationDelegate {
     func initTimer() {
         let label = self.initLabel(
             font     : NSFont.monospacedDigitSystemFont(ofSize: 36, weight: .regular),
-            format   : "HH:mm",
+            format   : "hh:mm",
             interval : 1
         )
         let screenWidth = NSScreen.main?.frame.width ?? 0
