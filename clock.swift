@@ -33,7 +33,6 @@ class Clock: NSObject, NSApplicationDelegate {
     var timer : NSWindow?
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
-        self.initDater()
         self.initTimer()
     }
 
@@ -76,28 +75,18 @@ class Clock: NSObject, NSApplicationDelegate {
         return window
     }
 
-    func initDater() {
-        let label = self.initLabel(
-            font     : NSFont.monospacedDigitSystemFont(ofSize: 18, weight: .regular),
-            format   : "YYYY-MM-dd",
-            interval : 10
-        )
-
-        self.dater = self.initWindow(
-            rect     : NSMakeRect(1145, 477, 120, 23),
-            label    : label
-        )
-    }
-
     func initTimer() {
         let label = self.initLabel(
             font     : NSFont.monospacedDigitSystemFont(ofSize: 36, weight: .regular),
             format   : "HH:mm",
             interval : 1
         )
+        let screenWidth = NSScreen.main?.frame.width ?? 0
+        let windowWidth: CGFloat = 120
+        let xPosition = screenWidth - windowWidth
 
         self.timer = self.initWindow(
-            rect     : NSMakeRect(1145, 428, 120, 46),
+            rect     : NSMakeRect(xPosition, 0, windowWidth, 46),
             label    : label
         )
     }
